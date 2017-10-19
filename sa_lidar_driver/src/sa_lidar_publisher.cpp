@@ -9,7 +9,7 @@ namespace dy_lidar
 {
 DYlaser::DYlaser(boost::asio::io_service& io)
 : serial_(io)
-  //,shutting_down_(false)
+
 {
   nh_.param("port", port_, std::string("/dev/ttyUSB0"));
   nh_.param("baud_rate", baud_rate_, 115200);
@@ -46,8 +46,6 @@ void DYlaser::poll()
   boost::array<uint8_t, 403> raw_bytes;     // 403 sets로 보냄 02 00 ~ 400개 ~ 03
 
 
-
-  //while (!shutting_down_ && !got_scan)
   while (!got_scan)
   {
     boost::asio::read(serial_, boost::asio::buffer(&raw_bytes[start_count],1));
@@ -123,12 +121,9 @@ void DYlaser::poll()
 }
 
 /*
-void LFCDLaser::close()
+void DYlaser::close()
 {
-  shutting_down_ = true;
-  serial_.open(port_);
-  serial_.set_option(boost::asio::serial_port_base::baud_rate(baud_rate_));
-  boost::asio::write(serial_, boost::asio::buffer("e", 1));
+
 };
 */
 
