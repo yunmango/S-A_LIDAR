@@ -1,0 +1,13 @@
+<launch>
+  <node pkg="sa_lidar_driver" type="sa_lidar_publisher" name="sa_lidar_publisher" output="screen">
+    <param name="port" value="/dev/ttyUSB0"/>
+    <param name="frame_id" value="base_scan" />
+  </node>
+
+  <include file="$(find kobuki_node)/launch/minimal.launch" />
+
+  <node pkg="kobuki_tf" type="kobuki_tf" name="kobuki_tf" output="screen">
+  </node>
+
+
+</launch>

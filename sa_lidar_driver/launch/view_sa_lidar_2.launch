@@ -1,0 +1,3 @@
+<launch>
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find sa_lidar_driver)/rviz/sa_lidar.rviz" />
+</launch>

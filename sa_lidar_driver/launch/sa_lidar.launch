@@ -1,0 +1,6 @@
+<launch>
+  <node pkg="sa_lidar_driver" type="sa_lidar_publisher" name="sa_lidar_publisher" output="screen">
+    <param name="port" value="/dev/ttyUSB0"/>
+    <param name="frame_id" value="laser"/>
+  </node>
+</launch>
